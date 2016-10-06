@@ -21,24 +21,12 @@ public class Employee {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public String getRole() {
         return role;
     }
 
-    public void setRole(String role) {
-        this.role = role;
-    }
-
     public String getCurrentProject() {
         return currentProject;
-    }
-
-    public void setCurrentProject(String currentProject) {
-        this.currentProject = currentProject;
     }
 
     public boolean isProfessionalService() {
@@ -52,11 +40,8 @@ public class Employee {
     public boolean hasSKill(String skill) {
         return this.skills.contains(skill);
     }
+
     public void setSkills(List<String> skills) {
         this.skills = skills;
-    }
-
-    public List<String> getSkills() {
-        return skills;
     }
 }
