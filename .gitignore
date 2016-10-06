@@ -1,0 +1,4 @@
+ddd-demo.i*
+.gradle/
+build/
+out/
