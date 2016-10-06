@@ -1,9 +1,12 @@
 package com.thoughtworks.ddd;
 
+import java.util.List;
+
 public class Employee {
     private String name;
     private String role;
     private String currentProject;
+    private List<String> skills;
 
     public Employee() {
     }
@@ -36,5 +39,24 @@ public class Employee {
 
     public void setCurrentProject(String currentProject) {
         this.currentProject = currentProject;
+    }
+
+    public boolean isProfessionalService() {
+        return !getRole().equals("Assoc");
+    }
+
+    public boolean isIdeal() {
+        return getCurrentProject().equals("Beach") || getCurrentProject().isEmpty();
+    }
+
+    public boolean hasSKill(String skill) {
+        return this.skills.contains(skill);
+    }
+    public void setSkills(List<String> skills) {
+        this.skills = skills;
+    }
+
+    public List<String> getSkills() {
+        return skills;
     }
 }

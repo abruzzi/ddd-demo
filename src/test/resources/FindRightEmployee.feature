@@ -14,6 +14,6 @@ Feature: Find employee who is assignable
   Scenario: Find all PS who is assignable
     Given I am staffing manager
     When I search for people who is assignable
-    Then I should see the following people:
+    Then I should get the following names:
       | Juntao    |
       | Highlight |

@@ -14,6 +14,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 public class FindRightEmployeeDef {
     private EmployeeRepository employeeRepository;
     private List<Employee> employees = new ArrayList<>();
+    private String skill;
 
     @Given("^we have the following employees:$")
     public void weHaveTheFollowingEmployees(List<EmployeeObject> employees) throws Throwable {
@@ -30,9 +31,20 @@ public class FindRightEmployeeDef {
         employees = employeeRepository.findAllAssignable();
     }
 
-    @Then("^I should see the following people:$")
+    @Given("^I have a project which require \"([^\"]*)\" as language$")
+    public void iHaveAProjectWhichRequireAsLanguage(String skill) throws Throwable {
+        this.skill = skill;
+    }
+
+    @When("^I search staff by skill$")
+    public void iSearchStaffBySkill() throws Throwable {
+        employees = employeeRepository.findBySkill(skill);
+    }
+
+    @Then("^I should get the following names:$")
     public void iShouldSeeTheFollowingPeople(List<String> names) throws Throwable {
         List<String> collect = employees.stream().map(Employee::getName).collect(toList());
         assertThat(collect, equalTo(names));
     }
+
 }

@@ -2,14 +2,12 @@ package com.thoughtworks.ddd;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class InMemoryEmployeeRepository implements EmployeeRepository{
     private List<Employee> employees = new ArrayList<>();
 
-    public InMemoryEmployeeRepository() {
-    }
+    public InMemoryEmployeeRepository() { }
 
     public InMemoryEmployeeRepository(List<Employee> employees) {
         this.employees = employees;
@@ -17,9 +15,16 @@ public class InMemoryEmployeeRepository implements EmployeeRepository{
 
     @Override
     public List<Employee> findAllAssignable() {
-        Predicate<Employee> beach = employee -> employee.getCurrentProject().equals("Beach") || employee.getCurrentProject().isEmpty();
-        Predicate<Employee> assoc = employee -> !employee.getRole().equals("Assoc");
+        return employees.stream().
+                filter(Employee::isIdeal).
+                filter(Employee::isProfessionalService).
+                collect(Collectors.toList());
+    }
 
-        return employees.stream().filter(beach).filter(assoc).collect(Collectors.toList());
+    @Override
+    public List<Employee> findBySkill(String skill) {
+        return findAllAssignable().stream().
+                filter(employee -> employee.hasSKill(skill)).
+                collect(Collectors.toList());
     }
 }
