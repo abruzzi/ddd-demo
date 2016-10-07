@@ -44,4 +44,8 @@ public class Employee {
     public void setSkills(List<String> skills) {
         this.skills = skills;
     }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
 }

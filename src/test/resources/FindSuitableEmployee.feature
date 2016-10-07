@@ -5,11 +5,11 @@ Feature: Find employee by skills
 
   Background: persona
     Given we have the following employees:
-      | name   | currentProject | role | skills     |
-      | Juntao | Consulting     | Dev  | Java,Ruby  |
-      | Yanyu  | Beach          | Dev  | Ruby       |
+      | name   | currentProject | role | skills    |
+      | Juntao | Consulting     | Dev  | Java,Ruby |
+      | Yanyu  | Beach          | Dev  | Ruby      |
       | Jiawei | Beach          | Dev  | Java,Ruby |
-      | Momo   | Beach          | Dev  | Python     |
+      | Momo   | Beach          | Dev  | Python    |
 
   Scenario: Search by skills
     Given I have a project which require "Ruby" as language
