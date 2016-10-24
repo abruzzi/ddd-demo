@@ -1,9 +1,8 @@
 package com.thoughtworks.ddd.domain;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
+
+import static java.util.stream.Collectors.toList;
 
 public class Project {
     private final String name;
@@ -32,7 +31,18 @@ public class Project {
     }
 
     public Map<String, Integer> getOpenRoles() {
-        return openRoles;
+        Map<String, Integer> map = new HashMap<>();
+
+        for (String role : openRoles.keySet()) {
+            System.err.println(role);
+            if(assignments.stream().map(Assignment::getRole).collect(toList()).contains(role)) {
+                map.put(role, openRoles.get(role)-1);
+            } else {
+                map.put(role, openRoles.get(role));
+            }
+        }
+
+        return map;
     }
 
     public boolean hasOpenRoleFor(String role) {

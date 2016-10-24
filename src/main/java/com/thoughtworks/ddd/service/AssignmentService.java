@@ -25,6 +25,6 @@ public class AssignmentService {
             throw new ProjectNoOpenRoleException();
         }
 
-        return assignmentRepository.save(new Assignment(employee.getId(), project.getId(), from, to));
+        return assignmentRepository.save(new Assignment(employee.getId(), project.getId(), employee.getRole(), from, to));
     }
 }

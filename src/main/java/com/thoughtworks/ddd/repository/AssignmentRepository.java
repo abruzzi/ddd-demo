@@ -9,4 +9,6 @@ public interface AssignmentRepository {
     Assignment findOne(String id);
 
     boolean hasAssignmentBetween(String employeeId, Date start, Date end);
+
+    Assignment currentAssignmentFor(String employeeId);
 }

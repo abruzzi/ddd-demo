@@ -5,7 +5,7 @@ Feature: Assign employee to project
 
   Scenario: assign employee on beach
     Given project "Commercial" has "5" open roles for "Dev"
-    And "Juntao Qiu" is on project "Beach" now
+    And "Juntao Qiu" who has skill "Java" is on project "Beach" now
     When I assign him to project "Commercial"
     Then "Juntao Qiu" should be on project "Commercial" now
     And project "Commercial" should has "4" open roles for "Dev"

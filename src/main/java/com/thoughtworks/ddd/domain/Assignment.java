@@ -6,6 +6,7 @@ import java.util.UUID;
 public class Assignment {
     private String employeeId;
     private String projectId;
+    private String role;
 
     private String id;
 
@@ -16,10 +17,11 @@ public class Assignment {
         return id;
     }
 
-    public Assignment(String employeeId, String projectId, Date from, Date to) {
+    public Assignment(String employeeId, String projectId, String role, Date from, Date to) {
         this.id = UUID.randomUUID().toString();
         this.employeeId = employeeId;
         this.projectId = projectId;
+        this.role = role;
         this.from = from;
         this.to = to;
     }
@@ -38,5 +40,9 @@ public class Assignment {
 
     public Date getTo() {
         return to;
+    }
+
+    public String getRole() {
+        return role;
     }
 }

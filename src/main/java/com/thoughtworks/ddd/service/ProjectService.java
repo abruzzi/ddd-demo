@@ -34,8 +34,10 @@ public class ProjectService {
             throw new ProjectNotSuitableForEmployeeException();
         }
 
-        project.addAssignment(new Assignment(projectId, employeeId, start, end));
+        Assignment assignment = new Assignment(employeeId, projectId, employee.getRole(), start, end);
+        assignmentRepository.save(assignment);
 
+        project.addAssignment(assignment);
         return projectRepository.save(project);
     }
 }
