@@ -1,8 +1,8 @@
 package com.thoughtworks.ddd;
 
-import com.thoughtworks.ddd.domain.Project;
-import com.thoughtworks.ddd.repository.InMemoryProjectRepository;
-import com.thoughtworks.ddd.repository.ProjectRepository;
+import com.thoughtworks.ddd.domain.model.project.Project;
+import com.thoughtworks.ddd.port.adaptor.persistence.InMemoryProjectRepository;
+import com.thoughtworks.ddd.domain.model.project.ProjectRepository;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;

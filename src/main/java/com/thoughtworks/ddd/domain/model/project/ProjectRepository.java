@@ -1,6 +1,4 @@
-package com.thoughtworks.ddd.repository;
-
-import com.thoughtworks.ddd.domain.Project;
+package com.thoughtworks.ddd.domain.model.project;
 
 import java.util.List;
 

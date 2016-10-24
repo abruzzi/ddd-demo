@@ -1,4 +1,4 @@
-package com.thoughtworks.ddd.domain;
+package com.thoughtworks.ddd.domain.model.employee;
 
 import java.util.List;
 import java.util.UUID;
@@ -45,7 +45,7 @@ public class Employee {
         return this.skills.contains(skill);
     }
 
-    public void setSkills(List<String> skills) {
+    public void updateSkills(List<String> skills) {
         this.skills = skills;
     }
 

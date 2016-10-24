@@ -1,6 +1,7 @@
-package com.thoughtworks.ddd.repository;
+package com.thoughtworks.ddd.port.adaptor.persistence;
 
-import com.thoughtworks.ddd.domain.Project;
+import com.thoughtworks.ddd.domain.model.project.Project;
+import com.thoughtworks.ddd.domain.model.project.ProjectRepository;
 
 import java.util.ArrayList;
 import java.util.List;

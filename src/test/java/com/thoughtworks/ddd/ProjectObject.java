@@ -1,6 +1,6 @@
 package com.thoughtworks.ddd;
 
-import com.thoughtworks.ddd.domain.Project;
+import com.thoughtworks.ddd.domain.model.project.Project;
 
 import java.util.Arrays;
 import java.util.HashMap;

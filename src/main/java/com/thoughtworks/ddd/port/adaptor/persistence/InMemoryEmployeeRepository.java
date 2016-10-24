@@ -1,12 +1,13 @@
-package com.thoughtworks.ddd.repository;
+package com.thoughtworks.ddd.port.adaptor.persistence;
 
-import com.thoughtworks.ddd.domain.Employee;
+import com.thoughtworks.ddd.domain.model.employee.Employee;
+import com.thoughtworks.ddd.domain.model.employee.EmployeeRepository;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class InMemoryEmployeeRepository implements EmployeeRepository{
+public class InMemoryEmployeeRepository implements EmployeeRepository {
     private List<Employee> employees = new ArrayList<>();
 
     public InMemoryEmployeeRepository() { }

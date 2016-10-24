@@ -1,11 +1,17 @@
 package com.thoughtworks.ddd.service;
 
-import com.thoughtworks.ddd.domain.Assignment;
-import com.thoughtworks.ddd.domain.Employee;
-import com.thoughtworks.ddd.domain.Project;
+import com.thoughtworks.ddd.application.ProjectService;
+import com.thoughtworks.ddd.domain.model.employee.Employee;
+import com.thoughtworks.ddd.domain.model.employee.EmployeeRepository;
+import com.thoughtworks.ddd.domain.model.project.Assignment;
+import com.thoughtworks.ddd.domain.model.project.AssignmentRepository;
+import com.thoughtworks.ddd.domain.model.project.Project;
+import com.thoughtworks.ddd.domain.model.project.ProjectRepository;
 import com.thoughtworks.ddd.exception.EmployeeHasAlreadyAssignedException;
 import com.thoughtworks.ddd.exception.ProjectNotSuitableForEmployeeException;
-import com.thoughtworks.ddd.repository.*;
+import com.thoughtworks.ddd.port.adaptor.persistence.InMemoryAssignmentRepository;
+import com.thoughtworks.ddd.port.adaptor.persistence.InMemoryEmployeeRepository;
+import com.thoughtworks.ddd.port.adaptor.persistence.InMemoryProjectRepository;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -34,7 +40,7 @@ public class ProjectServiceTest {
     @Test
     public void should_assign_employee_to_project() throws EmployeeHasAlreadyAssignedException, ProjectNotSuitableForEmployeeException {
         Employee juntao = new Employee("Juntao", "Dev", null);
-        juntao.setSkills(Collections.singletonList("Java"));
+        juntao.updateSkills(Collections.singletonList("Java"));
         employeeRepository.save(juntao);
 
         Project beach = new Project("Beach", "Java", null);

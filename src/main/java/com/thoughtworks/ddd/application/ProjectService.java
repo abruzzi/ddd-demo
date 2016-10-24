@@ -1,13 +1,13 @@
-package com.thoughtworks.ddd.service;
+package com.thoughtworks.ddd.application;
 
-import com.thoughtworks.ddd.domain.Assignment;
-import com.thoughtworks.ddd.domain.Employee;
-import com.thoughtworks.ddd.domain.Project;
+import com.thoughtworks.ddd.domain.model.project.Assignment;
+import com.thoughtworks.ddd.domain.model.employee.Employee;
+import com.thoughtworks.ddd.domain.model.project.Project;
 import com.thoughtworks.ddd.exception.EmployeeHasAlreadyAssignedException;
 import com.thoughtworks.ddd.exception.ProjectNotSuitableForEmployeeException;
-import com.thoughtworks.ddd.repository.AssignmentRepository;
-import com.thoughtworks.ddd.repository.EmployeeRepository;
-import com.thoughtworks.ddd.repository.ProjectRepository;
+import com.thoughtworks.ddd.domain.model.project.AssignmentRepository;
+import com.thoughtworks.ddd.domain.model.employee.EmployeeRepository;
+import com.thoughtworks.ddd.domain.model.project.ProjectRepository;
 
 import java.util.Date;
 

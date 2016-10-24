@@ -1,10 +1,15 @@
 package com.thoughtworks.ddd;
 
-import com.thoughtworks.ddd.domain.Assignment;
-import com.thoughtworks.ddd.domain.Employee;
-import com.thoughtworks.ddd.domain.Project;
-import com.thoughtworks.ddd.repository.*;
-import com.thoughtworks.ddd.service.ProjectService;
+import com.thoughtworks.ddd.domain.model.employee.Employee;
+import com.thoughtworks.ddd.domain.model.employee.EmployeeRepository;
+import com.thoughtworks.ddd.domain.model.project.Assignment;
+import com.thoughtworks.ddd.domain.model.project.AssignmentRepository;
+import com.thoughtworks.ddd.domain.model.project.Project;
+import com.thoughtworks.ddd.domain.model.project.ProjectRepository;
+import com.thoughtworks.ddd.port.adaptor.persistence.InMemoryAssignmentRepository;
+import com.thoughtworks.ddd.port.adaptor.persistence.InMemoryEmployeeRepository;
+import com.thoughtworks.ddd.port.adaptor.persistence.InMemoryProjectRepository;
+import com.thoughtworks.ddd.application.ProjectService;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
@@ -69,7 +74,7 @@ public class AssignmentStepDefs {
     @And("^\"([^\"]*)\" who has skill \"([^\"]*)\" is on project \"([^\"]*)\" now$")
     public void whoHasSkillIsOnProjectNow(String employee, String skill, String project) throws Throwable {
         Employee ps = new Employee(employee, "Dev", project);
-        ps.setSkills(Collections.singletonList(skill));
+        ps.updateSkills(Collections.singletonList(skill));
         employeeRepository.save(ps);
         current = ps;
     }

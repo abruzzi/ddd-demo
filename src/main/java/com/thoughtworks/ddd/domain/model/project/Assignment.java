@@ -1,4 +1,4 @@
-package com.thoughtworks.ddd.domain;
+package com.thoughtworks.ddd.domain.model.project;
 
 import java.util.Date;
 import java.util.UUID;

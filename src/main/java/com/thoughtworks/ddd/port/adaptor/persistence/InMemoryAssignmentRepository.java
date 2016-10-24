@@ -1,6 +1,7 @@
-package com.thoughtworks.ddd.repository;
+package com.thoughtworks.ddd.port.adaptor.persistence;
 
-import com.thoughtworks.ddd.domain.Assignment;
+import com.thoughtworks.ddd.domain.model.project.Assignment;
+import com.thoughtworks.ddd.domain.model.project.AssignmentRepository;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -12,11 +13,6 @@ public class InMemoryAssignmentRepository implements AssignmentRepository {
     @Override
     public boolean save(Assignment assignment) {
         return assignmentList.add(assignment);
-    }
-
-    @Override
-    public Assignment findOne(String id) {
-        return assignmentList.stream().filter(x -> x.getId().equals(id)).findFirst().orElse(null);
     }
 
     @Override

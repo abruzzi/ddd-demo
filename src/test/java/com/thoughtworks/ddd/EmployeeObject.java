@@ -1,6 +1,6 @@
 package com.thoughtworks.ddd;
 
-import com.thoughtworks.ddd.domain.Employee;
+import com.thoughtworks.ddd.domain.model.employee.Employee;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -49,9 +49,9 @@ public class EmployeeObject {
     public Employee toEmployee() {
         Employee employee = new Employee(name, role, currentProject);
         if(skills != null && skills.contains(",")) {
-            employee.setSkills(Arrays.asList(skills.split(",")));
+            employee.updateSkills(Arrays.asList(skills.split(",")));
         } else {
-            employee.setSkills(Collections.singletonList(skills));
+            employee.updateSkills(Collections.singletonList(skills));
         }
         return employee;
     }

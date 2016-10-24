@@ -1,4 +1,6 @@
-package com.thoughtworks.ddd.domain;
+package com.thoughtworks.ddd.domain.model.project;
+
+import com.thoughtworks.ddd.domain.model.employee.Employee;
 
 import java.util.*;
 
