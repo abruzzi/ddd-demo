@@ -1,5 +1,7 @@
 package com.thoughtworks.ddd;
 
+import com.thoughtworks.ddd.domain.Employee;
+
 import java.util.Arrays;
 import java.util.Collections;
 

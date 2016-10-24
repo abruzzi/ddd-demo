@@ -1,4 +1,6 @@
-package com.thoughtworks.ddd;
+package com.thoughtworks.ddd.repository;
+
+import com.thoughtworks.ddd.domain.Project;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +20,22 @@ public class InMemoryProjectRepository implements ProjectRepository {
     public List<Project> findBySkillsAndRole(List<String> skills, String role) {
         return projects.stream().
                 filter(project -> skills.contains(project.getTechStack())).
-                filter(project -> project.getOpenRoles().contains(role)).
+                filter(project -> project.hasOpenRoleFor(role)).
                 collect(Collectors.toList());
+    }
+
+    @Override
+    public boolean save(Project project) {
+        return projects.add(project);
+    }
+
+    @Override
+    public Project findByName(String project) {
+        return projects.stream().filter(p -> p.getName().equals(project)).findFirst().orElse(null);
+    }
+
+    @Override
+    public Project projectOfId(String projectId) {
+        return projects.stream().filter(p -> p.getId().equals(projectId)).findFirst().orElse(null);
     }
 }

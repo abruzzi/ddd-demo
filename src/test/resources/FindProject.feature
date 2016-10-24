@@ -5,11 +5,12 @@ Feature: Find project
 
   Background: Projects setup
     Given currently we have the following projects in the pipeline:
-      | name        | techStack  | openRoles |
-      | JetLag      | C#         | Dev,QA    |
-      | Commercial  | Java       | Dev       |
-      | Residential | Ruby       | Dev       |
-      | CCAV        | JavaScript | QA        |
+      | name        | techStack  | openRoles  |
+      | JetLag      | C#         | Dev:1,QA:1 |
+      | JetLag      | C#         | QA:1       |
+      | Commercial  | Java       | Dev:1      |
+      | Residential | Ruby       | Dev:1      |
+      | CCAV        | JavaScript | QA:1       |
 
   Scenario: find suitable project
     Given I am a Professional Service has the following skills:

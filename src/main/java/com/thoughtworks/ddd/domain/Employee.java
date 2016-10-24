@@ -1,20 +1,24 @@
-package com.thoughtworks.ddd;
+package com.thoughtworks.ddd.domain;
 
 import java.util.List;
+import java.util.UUID;
 
 public class Employee {
+    private String id;
     private String name;
     private String role;
     private String currentProject;
     private List<String> skills;
 
-    public Employee() {
-    }
-
     public Employee(String name, String role, String currentProject) {
+        this.id = UUID.randomUUID().toString();
         this.name = name;
         this.role = role;
         this.currentProject = currentProject;
+    }
+
+    public String getId() {
+        return id;
     }
 
     public String getName() {
@@ -47,5 +51,9 @@ public class Employee {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public List<String> getSkills() {
+        return skills;
     }
 }
