@@ -78,11 +78,11 @@ public class ProjectServiceTest {
     }
 
     private Employee prepareAJavaDev(String name) {
-        Employee juntao = new Employee(name, "Dev", null);
-        juntao.updateSkills(Collections.singletonList("Java"));
-        employeeRepository.save(juntao);
+        Employee employee = new Employee(name, "Dev", null);
+        employee.updateSkills(Collections.singletonList("Java"));
+        employeeRepository.save(employee);
 
-        return juntao;
+        return employee;
     }
 
     private Project prepareAJavaProject(String project) {
