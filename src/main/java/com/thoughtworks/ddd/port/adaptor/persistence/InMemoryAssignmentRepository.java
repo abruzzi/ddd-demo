@@ -17,6 +17,15 @@ public class InMemoryAssignmentRepository implements AssignmentRepository {
 
     @Override
     public boolean hasAssignmentBetween(String employeeId, Date start, Date end) {
+        Assignment currentAssignment = assignmentList.stream().filter(x -> x.getEmployeeId().equals(employeeId)).findFirst().orElse(null);
+        if(currentAssignment == null) {
+            return false;
+        }
+
+        if(currentAssignment.getFrom().before(start) && currentAssignment.getTo().after(end)) {
+            return true;
+        }
+
         return false;
     }
 

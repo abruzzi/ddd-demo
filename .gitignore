@@ -1,4 +1,5 @@
 ddd-demo.i*
+output/
 .gradle/
 build/
 out/

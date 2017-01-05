@@ -15,6 +15,8 @@ import com.thoughtworks.ddd.port.adaptor.persistence.InMemoryProjectRepository;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
@@ -39,17 +41,46 @@ public class ProjectServiceTest {
 
     @Test
     public void should_assign_employee_to_project() throws EmployeeHasAlreadyAssignedException, ProjectNotSuitableForEmployeeException {
-        Employee juntao = new Employee("Juntao", "Dev", null);
-        juntao.updateSkills(Collections.singletonList("Java"));
-        employeeRepository.save(juntao);
-
-        Project beach = new Project("Beach", "Java", null);
-        projectRepository.save(beach);
+        Employee juntao = prepareAJavaDev("Juntao");
+        Project beach = prepareAJavaProject("Beach");
 
         projectService.assignEmployeeToProject(juntao.getId(), beach.getId(), new Date(), new Date());
 
         List<Assignment> assignments = beach.getAssignments();
         assertThat(assignments.size(), equalTo(1));
+    }
+
+    @Test(expected = EmployeeHasAlreadyAssignedException.class)
+    public void should_throw_exception_when_employee_is_assigned_before() throws EmployeeHasAlreadyAssignedException, ProjectNotSuitableForEmployeeException, ParseException {
+        Employee juntao = prepareAJavaDev("Juntao");
+        Project huawei = prepareAJavaProject("Huawei");
+
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        Date start = simpleDateFormat.parse("2016-10-10");
+        Date end = simpleDateFormat.parse("2017-2-1");
+
+        projectService.assignEmployeeToProject(juntao.getId(), huawei.getId(), start, end);
+
+        List<Assignment> assignments = huawei.getAssignments();
+        assertThat(assignments.size(), equalTo(1));
+
+        Project beach = prepareAJavaProject("Beach");
+
+        projectService.assignEmployeeToProject(juntao.getId(), beach.getId(), new Date(), new Date());
+    }
+
+    private Employee prepareAJavaDev(String name) {
+        Employee juntao = new Employee(name, "Dev", null);
+        juntao.updateSkills(Collections.singletonList("Java"));
+        employeeRepository.save(juntao);
+
+        return juntao;
+    }
+
+    private Project prepareAJavaProject(String project) {
+        Project beach = new Project(project, "Java", null);
+        projectRepository.save(beach);
+        return beach;
     }
 
 }
