@@ -50,6 +50,14 @@ public class ProjectServiceTest {
         assertThat(assignments.size(), equalTo(1));
     }
 
+    @Test(expected = ProjectNotSuitableForEmployeeException.class)
+    public void should_throw_exception_when_employee_skill_doesnt_match() throws EmployeeHasAlreadyAssignedException, ProjectNotSuitableForEmployeeException {
+        Employee juntao = prepareAJavaDev("Juntao");
+        Project beach = prepareARubyProject("Beach");
+
+        projectService.assignEmployeeToProject(juntao.getId(), beach.getId(), new Date(), new Date());
+    }
+
     @Test(expected = EmployeeHasAlreadyAssignedException.class)
     public void should_throw_exception_when_employee_is_assigned_before() throws EmployeeHasAlreadyAssignedException, ProjectNotSuitableForEmployeeException, ParseException {
         Employee juntao = prepareAJavaDev("Juntao");
@@ -78,9 +86,16 @@ public class ProjectServiceTest {
     }
 
     private Project prepareAJavaProject(String project) {
-        Project beach = new Project(project, "Java", null);
-        projectRepository.save(beach);
-        return beach;
+        return prepareAProject(project, "Java");
     }
 
+    private Project prepareARubyProject(String project) {
+        return prepareAProject(project, "Ruby");
+    }
+
+    private Project prepareAProject(String project, String techStack) {
+        Project proj = new Project(project, techStack, null);
+        projectRepository.save(proj);
+        return proj;
+    }
 }
