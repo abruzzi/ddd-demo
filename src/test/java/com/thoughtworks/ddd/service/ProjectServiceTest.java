@@ -65,7 +65,7 @@ public class ProjectServiceTest {
 
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
         Date start = simpleDateFormat.parse("2016-10-10");
-        Date end = simpleDateFormat.parse("2017-2-1");
+        Date end = simpleDateFormat.parse("2026-1-1");
 
         projectService.assignEmployeeToProject(juntao.getId(), huawei.getId(), start, end);
 
