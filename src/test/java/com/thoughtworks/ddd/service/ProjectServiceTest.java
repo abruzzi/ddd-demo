@@ -17,6 +17,7 @@ import org.junit.Test;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
@@ -63,9 +64,10 @@ public class ProjectServiceTest {
         Employee juntao = prepareAJavaDev("Juntao");
         Project huawei = prepareAJavaProject("Huawei");
 
+        LocalDate today = LocalDate.now();
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        Date start = simpleDateFormat.parse("2016-10-10");
-        Date end = simpleDateFormat.parse("2026-1-1");
+        Date start = simpleDateFormat.parse(today.toString());
+        Date end = simpleDateFormat.parse(today.plusDays(100).toString());
 
         projectService.assignEmployeeToProject(juntao.getId(), huawei.getId(), start, end);
 
@@ -73,8 +75,10 @@ public class ProjectServiceTest {
         assertThat(assignments.size(), equalTo(1));
 
         Project beach = prepareAJavaProject("Beach");
+        Date startOfBeach = simpleDateFormat.parse(today.plusDays(10).toString());
+        Date endOfBeach = simpleDateFormat.parse(today.plusDays(80).toString());
 
-        projectService.assignEmployeeToProject(juntao.getId(), beach.getId(), new Date(), new Date());
+        projectService.assignEmployeeToProject(juntao.getId(), beach.getId(), startOfBeach, endOfBeach);
     }
 
     private Employee prepareAJavaDev(String name) {
